@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div>
+        <h1>
+            Welcome to PetStore - the best pet shop in Belarus!
+        </h1>
+        <h2 class="articleTitle">{{ article.title }}</h2>
+        <span class="articleText">{{ article.text }}</span>
+        <img class="articleImage" src="{{ article.image.url }}" alt="article_image">
+    </div>
+{% endblock %}

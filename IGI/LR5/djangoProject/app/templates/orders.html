@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Orders list</h1>
+{% for order in  orders%}
+    <div>
+        <p>{{ order.createdAt}}</p>
+        <h3>Total cost: {{ order.salePrice}} $</h3>
+        <h3>List of products</h3>
+        {% for product in order.products.all %}
+        <p>{{ product.name }} : {{product.price}} $</p>
+        {% endfor %}
+        <h3>Customer data:</h3>
+        <p>Address: {{order.address}} -  email: {{ order.customer.email}}</p>
+        <br></br>
+    </div>
+{% endfor %}
+{% endblock %}

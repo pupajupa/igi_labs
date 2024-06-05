@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div>
+        <img src="{% static "stats/customerNames.jpg" %}" width="600px" height="350px" alt="stat_customers"/>
+        <h1>Suppliers:<h1>
+        {% for supplier in suppliers %}
+            <h3>{{ supplier.name }} - {{ supplier.createdAt.date }}, {{ supplier.country }}</h3>
+        {% endfor %}
+        <h1>Customers:</h1>
+        {% for customer in customers %}
+            <div>
+                <h3>{{ customer.name }} - {{ customer.email }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

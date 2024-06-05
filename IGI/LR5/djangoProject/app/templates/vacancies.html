@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="mainContainer">
+        {% for pos in positions %}
+            <div class="positionContainer">
+                <p class="title">{{ pos.position }} ({{ pos.salary }}$ / month)</p>
+                <span class="description">{{ pos.description }}</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

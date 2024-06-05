@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="mainAbout">
+        <span>{{ about.text }}</span>
+        {% if about.image %}
+            <img src="{{ about.image.url }}" alt="friendly_image" class="friendlyImage">
+        {% endif %}
+    </div>
+{% endblock %}

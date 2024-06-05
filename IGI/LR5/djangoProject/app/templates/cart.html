@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div>
+        {% if form is None %}
+            <h1>CART ({{ price }}$)</h1>
+        {% endif %}
+        <div class="orderContent">
+            {% if form %}
+                <div class="authWindow">
+                  <form method="post">
+                      {% csrf_token %}
+                      <table>
+                      {{ form.as_table }}
+                      </table>
+                      <input class="submitAuth" type="submit" value='Buy' />
+                  </form>
+                </div>
+            {% endif %}
+            {% if orders %}
+                {% for order in orders %}
+                    <div class="orderContainer">
+                        <div class="infoContainer">
+                            <p class="productName" style="font-size: 14px; font-weight: 500">{{ order.product.name }}</p>
+                            <p class="price" style="font-size: 16px; font-weight: 600">{{ order.product.price }}$</p>
+                        </div>
+                        <img class="productImage" style="width: 300px; height: 300px; border-radius: 8px;" src="{{ order.product.image.url }}" alt="product_image">
+                    </div>
+                {% endfor %}
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btnBuy" name="buy" value="buy">
+                        Buy
+                    </button>
+                </form>
+            {% else %}
+                {% if form is None %}
+                    <h2>Nothing in cart...</h2>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

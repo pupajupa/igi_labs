@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load tz %}
+{% load static %}
+{% block content %}
+    <div class="profileContainer">
+        <h1>{{ user.name }}</h1>
+        <h2>Email: {{ user.email }}</h2>
+        <p>Member since: {{ user.createdAt.date }}</p>
+        <p>Phone number: {{ user.phone }}</p>
+        {% get_current_timezone as TIME_ZONE %}
+        <p>Timezone: {{ TIME_ZONE}}</p>
+        <p>Local Date: {{ date }}</p>
+        <p>UTC Date: {{ date_utc }}</p>
+    </div>
+{% endblock %}
